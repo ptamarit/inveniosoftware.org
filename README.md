@@ -15,26 +15,32 @@ This website is built with [11ty (Eleventy)](https://www.11ty.dev/), a static si
 
 ### Adding Blog Posts
 
-1. Create a new markdown file in `src/blog-posts/`
-1. Use the naming convention: `YYYY-MM-DD-post-title.md`
-1. Make sure your authors are included (with name and optional ORCID) in _data/post_authors.json
+Run the `new-post` script to scaffold a new blog post with a generated file name, current date and a random DOI:
+
+```bash
+npm run new-post -- "Your Blog Post Title" [--author your-username]
+```
+
+This creates `src/blog-posts/YYYY-MM-DD-your-blog-post-title.md` with the frontmatter pre-filled. Then:
+
+1. Make sure your authors are included (with name and optional ORCID) in `_data/post_authors.json`
+1. Add more authors to the `authors` list if needed
 1. Add tags as needed (e.g. InvenioRDM, InvenioILS, Invenio Framework, Showcase, Open Repositories, etc.)
-1. Generate a random DOI string with prefix 10.63517 and an Invenio recid, e.g. https://doi.org/10.63517/21bf8-cds33
-1. Add:
-^
+1. Add an image with `image: /assets/images/blog-posts/your-image-filename.jpg` if the post has one
+1. Write your post content below the frontmatter
+
+The generated frontmatter looks like:
+
 ```yaml
 ---
 title: "Your Blog Post Title"
-authors: 
-  - author-username
-  - another-author-username
+authors:
+  - your-username
 date: YYYY-MM-DD
-doi: https://doi.org/10.63517/xxxxx
-image: /assets/images/blog-posts/your-image-filename.jpg
+doi: https://doi.org/10.63517/xxxxx-xxxxx
 tags:
   - InvenioRDM
-  - AnotherTag
-permalink: "/blog/YYYY-MM-DD-post-title/"
+permalink: "/blog/YYYY-MM-DD-your-blog-post-title/"
 ---
 
 Your blog content here...
